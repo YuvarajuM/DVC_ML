@@ -7,4 +7,3 @@ stages:
       - config/config.yaml
     outs:
       - artifacts/raw_local_dir/data.csv
-      
