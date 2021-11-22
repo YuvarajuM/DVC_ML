@@ -10,14 +10,14 @@ def train(config_path, params_path):
     config = read_yaml(config_path)
     params = read_yaml(params_path)
 
-    artifacts_dir = config["artifacts"]['artifacts_dir']
-    split_data_dir = config["artifacts"]["split_data_dir"]
+    artifacts_dir = config["artifacts"]['artifacts_dir'] #artifacts
+    split_data_dir = config["artifacts"]["split_data_dir"] #split_data_dir
 
 
-    train_data_filename = config["artifacts"]["train"]
+    train_data_filename = config["artifacts"]["train"] #train.csv
 
 
-    train_data_path = os.path.join(artifacts_dir, split_data_dir, train_data_filename)
+    train_data_path = os.path.join(artifacts_dir, split_data_dir, train_data_filename) #artifacts/split_data_dir/train.csv
     
     train_data = pd.read_csv(train_data_path)
 
@@ -32,14 +32,14 @@ def train(config_path, params_path):
     lr = ElasticNet(alpha=alpha, l1_ratio=l1_ratio, random_state=random_state)
     lr.fit(train_x, train_y)
 
-    model_dir = config["artifacts"]["model_dir"]
-    model_filename = config["artifacts"]["model_filename"]
+    model_dir = config["artifacts"]["model_dir"] #model_dir
+    model_filename = config["artifacts"]["model_filename"]#ElasticNet.model
 
-    model_dir = os.path.join(artifacts_dir, model_dir)
+    model_dir = os.path.join(artifacts_dir, model_dir)# model_dir/ElasticNet.model
 
     create_directory([model_dir])
 
-    model_path = os.path.join(model_dir, model_filename)
+    model_path = os.path.join(model_dir, model_filename)# model_dir/ElasticNet.model
 
 
     joblib.dump(lr, model_path)

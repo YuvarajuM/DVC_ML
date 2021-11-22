@@ -1,4 +1,4 @@
-from src.utils.all_utils import read_yaml,create_direcory, save_local_df
+from src.utils.all_utils import read_yaml,create_directory, save_local_df
 import argparse
 import pandas as pd
 import os
@@ -24,7 +24,7 @@ def split_and_save(config_path,params_path):
     train, test = train_test_split(df,test_size=split_ratio,random_state=random_state)
 
     split_data_dir=config["artifacts"]["split_data_dir"]
-    create_direcory([os.path.join(artifcats_dir,split_data_dir)])
+    create_directory([os.path.join(artifcats_dir,split_data_dir)])
 
     train_data_filename=config["artifacts"]["train"]
 
